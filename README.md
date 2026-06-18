@@ -21,6 +21,50 @@ WanderPlan is a PHP and MySQL travel planning web app for organizing group trips
 
 ![Homepage screen](screenshots/homepage.png)
 
+### Logged-In Homepage
+
+![Logged-in homepage](screenshots/homepage-authenticated.png)
+
+### Add a Trip
+
+![Create trip form](screenshots/create-trip.png)
+
+### Trip Added
+
+![Trips list after adding a trip](screenshots/trips-list-after-add.png)
+
+### Upcoming Trips
+
+![Upcoming trips screen](screenshots/upcoming-trips.png)
+
+### My Bookings
+
+![My bookings screen](screenshots/my-bookings.png)
+
+### Payment
+
+![Payment screen](screenshots/payment.png)
+
+### Expenses
+
+![Expenses screen](screenshots/expenses.png)
+
+### Activities
+
+![Activities management screen](screenshots/activities.png)
+
+### Emergency Contacts
+
+![Emergency contacts screen](screenshots/emergency-contacts.png)
+
+### Upload Document
+
+![Upload document screen](screenshots/upload-document.png)
+
+### Admin Dashboard
+
+![Admin dashboard screen](screenshots/admin-dashboard.png)
+
 ### Sign In
 
 ![Sign in screen](screenshots/signin.png)
