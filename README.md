@@ -17,6 +17,10 @@ WanderPlan is a PHP and MySQL travel planning web app for organizing group trips
 
 ## Screenshots
 
+### Homepage
+
+![Homepage screen](screenshots/homepage.png)
+
 ### Sign In
 
 ![Sign in screen](screenshots/signin.png)
@@ -64,6 +68,12 @@ Run the PHPUnit PHAR included in the project:
 C:\xampp\php\php.exe phpunit-9.phar
 ```
 
+Latest local result with XAMPP/MySQL running:
+
+```text
+OK (31 tests, 57 assertions)
+```
+
 ## Project Structure
 
 ```text
@@ -76,4 +86,3 @@ tests/         PHPUnit tests and performance test assets
 uploads/       Uploaded demo images/documents
 screenshots/   README screenshots
 ```
-
