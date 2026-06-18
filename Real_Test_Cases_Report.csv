@@ -1,0 +1,35 @@
+Case ID,Module,Test Scenario,Input Data,Expected Result,Actual Result,Status
+TC-01,Database,Test Open Connection,Call openConnection(),Returns valid mysqli object,Valid connection returned,Pass
+TC-02,Database,Test Query Execution,Execute SELECT 1,Returns row with 1,Query executed successfully,Pass
+TC-03,Database,Test Close Connection,Call closeConnection(),Closes without throwing error,Closed successfully,Pass
+TC-04,Database,Test Close Without Open,Call close on uninitialized DB,Safe execution no error,Executed safely,Pass
+TC-05,Database,Test Connection Property,Check public connection property,Property is instance of mysqli,Property set correctly,Pass
+TC-06,Authentication,Register New User,Valid Name Email & Password,User created and returns success,Insert succeeded,Pass
+TC-07,Authentication,Register Duplicate Email,Email that already exists,Detects duplicate returns exists,Blocked and returned exists,Pass
+TC-08,Authentication,Valid Sign In,Correct Email & Password,User found and verified,Session created correctly,Pass
+TC-09,Authentication,Wrong Password Sign In,Correct Email & Wrong Password,Verification fails,Login blocked,Pass
+TC-10,Authentication,Non-Existent Email,Email not in database,No user found (0 rows),Zero rows returned,Pass
+TC-11,Authentication,Get User By Email,Registered email address,Return associative array with user_id,User ID fetched correctly,Pass
+TC-12,Authentication,Get User By Invalid Email,Unregistered email,Returns null,Returned null correctly,Pass
+TC-13,Authentication,Password Hashing on Register,Plain text password,Password stored as hash in DB,Password hashed successfully,Pass
+TC-14,Authentication,Short Password Registration,Password length = 3 ("123"),System should reject weak password,User registered successfully without validation,Fail (UX/Security Issue)
+TC-15,Trips,Create Trip,Valid Trip Data (Name Budget Dates),Trip inserted with ID > 0,Trip created successfully,Pass
+TC-16,Trips,Read Trip By ID,Valid Trip ID,Returns correct trip details,Details matched inserted data,Pass
+TC-17,Trips,Update Trip,New Name and Budget,DB reflects updated values,Values updated successfully,Pass
+TC-18,Trips,Delete Trip,Valid Trip ID,Record removed from database,Zero rows found after deletion,Pass
+TC-19,Trips,Read Non-Existent Trip,Trip ID = 999999,Returns null,Returned null correctly,Pass
+TC-20,Trips,Trip Budget Precision,Budget = 2000.50,Stored as float exactly,Budget matched exactly,Pass
+TC-21,Trips,Negative Trip Budget,Budget = -500,System should reject negative budgets,Trip created with negative budget,Fail (Validation Issue)
+TC-22,Trips,List All Trips,Execute SELECT query on trips,Returns valid result set,Result set returned without error,Pass
+TC-23,Trips,Trip Date Validation,Start: 01-06 End: 10-06,End Date >= Start Date,Condition fulfilled,Pass
+TC-24,Bookings,Create Booking,User ID Trip ID Budget,Booking saved with pending status,Booking created successfully,Pass
+TC-25,Bookings,Cancel Booking,Valid Booking ID,Status updated to cancelled,Status changed successfully,Pass
+TC-26,Bookings,Prevent Duplicate Bookings,Book same trip twice,Detect existing active booking,Existing booking detected,Pass
+TC-27,Payments,Process Successful Payment,Valid Booking ID & Matching Amount,Payment inserted & booking confirmed,Payment processed successfully,Pass
+TC-28,Payments,Payment Amount Mismatch,Booking Cost: 500 Input: 400,Error: Amount does not match,Mismatch detected properly,Pass
+TC-29,Activities,Propose Activity,Trip ID Date Cost,Activity saved as pending,Activity inserted successfully,Pass
+TC-30,Activities,Approve Activity,Valid Activity ID (Leader access),Status -> approved,Status updated to approved,Pass
+TC-31,Activities,Reject Activity,Valid Activity ID (Leader access),Status -> rejected,Status updated to rejected,Pass
+TC-32,Activities,Unauthorized Approval,Member tries to approve activity,Should reject unauthorized action,Action rejected safely with Unauthorized error,Pass
+TC-33,Expenses,Add Expense,Trip ID & Amount,Expense linked to trip,Expense saved correctly,Pass
+TC-34,Expenses,Delete Expense,Valid Expense ID,Expense record removed,Record deleted successfully,Pass

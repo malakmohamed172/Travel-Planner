@@ -1,0 +1,13 @@
+.phpunit.result.cache
+vendor/
+composer.lock
+
+# Local/editor files
+.env
+.idea/
+.vscode/
+*.log
+
+# OS files
+Thumbs.db
+.DS_Store

@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>Travel Planner - ملخص فهم المشروع</title>
+<style>
+@page {
+    size: A4;
+    margin: 16mm 14mm;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    line-height: 1.75;
+    color: #182235;
+    background: #f3f6fb;
+}
+
+.page {
+    background: #ffffff;
+    padding: 34px 38px;
+    min-height: 100vh;
+}
+
+.cover {
+    min-height: 94vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid #d9e2f2;
+    border-radius: 18px;
+    padding: 54px;
+    background:
+        linear-gradient(135deg, rgba(19, 78, 74, 0.92), rgba(30, 64, 175, 0.86)),
+        radial-gradient(circle at top left, rgba(255,255,255,0.25), transparent 34%);
+    color: white;
+}
+
+.eyebrow {
+    font-size: 14px;
+    letter-spacing: 0;
+    color: #c7d2fe;
+    font-weight: 700;
+}
+
+h1 {
+    margin: 14px 0 18px;
+    font-size: 42px;
+    line-height: 1.25;
+}
+
+.cover p {
+    max-width: 720px;
+    font-size: 18px;
+    color: #eef2ff;
+}
+
+.cover-meta {
+    margin-top: 42px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.meta-card {
+    border: 1px solid rgba(255,255,255,0.22);
+    background: rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 14px;
+}
+
+.meta-card strong {
+    display: block;
+    font-size: 13px;
+    color: #bfdbfe;
+}
+
+.meta-card span {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+h2 {
+    color: #0f3b3f;
+    border-bottom: 2px solid #dbeafe;
+    padding-bottom: 8px;
+    margin: 30px 0 14px;
+    font-size: 25px;
+}
+
+h3 {
+    color: #1e3a8a;
+    margin: 20px 0 8px;
+    font-size: 18px;
+}
+
+p {
+    margin: 8px 0 12px;
+}
+
+.lead {
+    font-size: 17px;
+    background: #eef7ff;
+    border-right: 5px solid #2563eb;
+    padding: 14px 16px;
+    border-radius: 10px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.card {
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 14px 15px;
+    background: #fbfdff;
+}
+
+.card strong {
+    color: #0f3b3f;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 22px;
+    font-size: 13.5px;
+}
+
+th {
+    background: #123f67;
+    color: white;
+    text-align: right;
+    padding: 10px;
+}
+
+td {
+    border: 1px solid #d9e2ef;
+    padding: 9px 10px;
+    vertical-align: top;
+}
+
+tr:nth-child(even) td {
+    background: #f8fbff;
+}
+
+code, pre {
+    direction: ltr;
+    text-align: left;
+    font-family: Consolas, "Courier New", monospace;
+}
+
+pre {
+    background: #0f172a;
+    color: #e2e8f0;
+    border-radius: 10px;
+    padding: 13px 15px;
+    overflow: hidden;
+    font-size: 12.5px;
+    line-height: 1.55;
+}
+
+.note {
+    background: #fff7ed;
+    border-right: 5px solid #f97316;
+    border-radius: 10px;
+    padding: 12px 14px;
+}
+
+.success {
+    background: #ecfdf5;
+    border-right: 5px solid #16a34a;
+    border-radius: 10px;
+    padding: 12px 14px;
+}
+
+.toc {
+    columns: 2;
+    column-gap: 28px;
+}
+
+.toc li {
+    break-inside: avoid;
+    margin-bottom: 7px;
+}
+
+ul, ol {
+    padding-right: 22px;
+}
+
+.break {
+    page-break-before: always;
+}
+
+.small {
+    font-size: 12.5px;
+    color: #64748b;
+}
+
+.ltr {
+    direction: ltr;
+    text-align: left;
+}
+</style>
+</head>
+<body>
+<main class="page">
+    <section class="cover">
+        <div class="eyebrow">Travel Planner PHP Project</div>
+        <h1>ملخص فهم المشروع والكود والتستات</h1>
+        <p>
+            الملف ده معمول عشان تفهم المشروع بسرعة قبل المناقشة أو التسليم: السيستم بيعمل إيه،
+            ملفات PHP متقسمة إزاي، التستات بتثبت إيه، وأساسيات PHP المهمة زي GET وPOST وSession وPrepared Statements.
+        </p>
+        <div class="cover-meta">
+            <div class="meta-card"><strong>Architecture</strong><span>MVC بسيط</span></div>
+            <div class="meta-card"><strong>Backend</strong><span>PHP + MySQL</span></div>
+            <div class="meta-card"><strong>Testing</strong><span>PHPUnit</span></div>
+        </div>
+    </section>
+
+    <h2>الفهرس</h2>
+    <ol class="toc">
+        <li>فكرة المشروع باختصار</li>
+        <li>مين المستخدمين وأدوارهم</li>
+        <li>الـ workflow الأساسي داخل السيستم</li>
+        <li>تقسيمة المشروع: Controllers / Models / Views</li>
+        <li>شرح ملفات PHP المهمة</li>
+        <li>شرح كود التستات وهدف كل Test Class</li>
+        <li>أساسيات PHP المستخدمة في المشروع</li>
+        <li>أهم نقاط الأمان والفاليديشن</li>
+        <li>ملخص سريع للمناقشة</li>
+    </ol>
+
+    <h2 class="break">1. المشروع بيتكلم عن إيه؟</h2>
+    <p class="lead">
+        Travel Planner هو Web Application لإدارة الرحلات الجماعية. الفكرة إن المستخدم يقدر يشوف رحلات،
+        يحجز رحلة، يدفع، يتابع الأنشطة اليومية، يضيف مصاريف، يرفع مستندات، ويستقبل Notifications.
+        أما الـ Leader فيقدر ينشئ رحلات ويقسمها لأيام ومحطات، ويدير الأنشطة المقترحة.
+        والـ Admin عنده Dashboard لإدارة المستخدمين والحجوزات والتقارير.
+    </p>
+
+    <div class="grid">
+        <div class="card">
+            <strong>للمستخدم العادي Member</strong>
+            <p>يشوف الرحلات، يحجز، يدفع، يرفع مستند، يتابع Activities، ويختار Going / Not Going.</p>
+        </div>
+        <div class="card">
+            <strong>للقائد Leader</strong>
+            <p>ينشئ Trip، يضيف Itinerary وStops، ويمتلك صلاحية Approve / Reject للـ Activities الخاصة برحلته.</p>
+        </div>
+        <div class="card">
+            <strong>للأدمن Admin</strong>
+            <p>يشوف Dashboard فيها users/bookings/statistics، ويقدر يعدل أو يحذف مستخدمين.</p>
+        </div>
+        <div class="card">
+            <strong>قاعدة البيانات</strong>
+            <p>بتخزن users, roles, trips, bookings, payments, activities, expenses, documents, notifications.</p>
+        </div>
+    </div>
+
+    <h2>2. الأدوار والصلاحيات</h2>
+    <table>
+        <tr><th>Role</th><th>المعنى</th><th>الصلاحيات الأساسية</th></tr>
+        <tr><td>role_id = 1</td><td>Admin</td><td>إدارة المستخدمين، متابعة الحجوزات، رؤية إحصائيات السيستم.</td></tr>
+        <tr><td>role_id = 2</td><td>Leader</td><td>إنشاء وإدارة الرحلات التي يقودها، والموافقة أو الرفض للأنشطة.</td></tr>
+        <tr><td>role_id = 3</td><td>Member</td><td>حجز الرحلات، الدفع، متابعة الأنشطة، رفع المستندات، استلام الإشعارات.</td></tr>
+    </table>
+
+    <p class="note">
+        أهم قاعدة في الصلاحيات: الواجهة ممكن تخفي زر، لكن الحماية الحقيقية لازم تكون في الـ Controller.
+        يعني حتى لو المستخدم كتب URL بإيده، السيرفر لازم يرفض لو مش صاحب الصلاحية.
+    </p>
+
+    <h2 class="break">3. الـ Workflow الأساسي</h2>
+    <ol>
+        <li>المستخدم يعمل Register أو Sign in.</li>
+        <li>السيستم يحفظ بياناته في Session بعد تسجيل الدخول.</li>
+        <li>لو Admin يروح Admin Dashboard، ولو User يروح Homepage.</li>
+        <li>الـ Leader ينشئ Trip ويضيف itinerary days وstops.</li>
+        <li>الـ Member يشوف الرحلات ويحجز Trip.</li>
+        <li>بعد الحجز، المستخدم يقدر يدفع وتتحول حالة الحجز إلى confirmed.</li>
+        <li>المستخدمين يقترحوا Activities على itinerary معين.</li>
+        <li>Leader الرحلة يوافق أو يرفض activity.</li>
+        <li>Notifications بتوصل لصاحب العلاقة، زي activity proposed أو approved/rejected.</li>
+    </ol>
+
+    <h2>4. تقسيمة المشروع</h2>
+    <table>
+        <tr><th>Folder</th><th>وظيفته</th></tr>
+        <tr><td class="ltr">Controllers/</td><td>المنطق الرئيسي: يستقبل Requests، يتأكد من البيانات، يكلم الموديل أو الداتابيز، ويرجع Redirect/Response.</td></tr>
+        <tr><td class="ltr">Models/</td><td>Classes بتمثل الجداول أو العمليات القريبة من قاعدة البيانات، زي Activity وExpense.</td></tr>
+        <tr><td class="ltr">Views/</td><td>صفحات HTML/PHP اللي المستخدم بيشوفها: login, register, trips, dashboard.</td></tr>
+        <tr><td class="ltr">tests/</td><td>Unit tests باستخدام PHPUnit عشان نتأكد إن العمليات الأساسية شغالة.</td></tr>
+        <tr><td class="ltr">sql/</td><td>ملفات تعديل أو إنشاء جداول مساعدة.</td></tr>
+    </table>
+
+    <h2 class="break">5. شرح ملفات PHP المهمة</h2>
+    <h3>Controllers</h3>
+    <table>
+        <tr><th>الملف</th><th>بيعمل إيه؟</th></tr>
+        <tr><td class="ltr">DBController.php</td><td>مسؤول عن فتح وغلق اتصال MySQL باستخدام mysqli. معظم الملفات بتستخدمه قبل أي Query.</td></tr>
+        <tr><td class="ltr">AuthController.php</td><td>تسجيل الدخول والتسجيل والخروج. بيستخدم password_hash وpassword_verify، وبيحفظ بيانات المستخدم في Session.</td></tr>
+        <tr><td class="ltr">TripController.php</td><td>إنشاء الرحلة، إنشاء itinerary وstops، تحديث أو حذف trip مع التحقق من صلاحية owner/admin.</td></tr>
+        <tr><td class="ltr">BookingController.php</td><td>إنشاء booking، منع الحجز المكرر، وإلغاء الحجز لصاحب الحجز فقط.</td></tr>
+        <tr><td class="ltr">PaymentController.php</td><td>يتأكد إن المبلغ يساوي تكلفة الحجز، يسجل payment، ويحول booking إلى confirmed.</td></tr>
+        <tr><td class="ltr">ActivityController.php</td><td>إنشاء activity، موافقة/رفض leader، وتسجيل RSVP going أو not_going.</td></tr>
+        <tr><td class="ltr">ExpenseController.php</td><td>إضافة أو حذف مصاريف الرحلة وربطها بـ trip.</td></tr>
+        <tr><td class="ltr">EmergencyController.php</td><td>إضافة emergency contacts للرحلة.</td></tr>
+        <tr><td class="ltr">InviteMemberController.php</td><td>دعوة مستخدم للانضمام لرحلة وتسجيله في trip_member وإرسال notification.</td></tr>
+        <tr><td class="ltr">DocumentController.php</td><td>رفع مستندات المستخدم مثل passport/ID وتخزين اسم الملف في جدول document.</td></tr>
+    </table>
+
+    <h3>Models</h3>
+    <table>
+        <tr><th>الملف</th><th>فكرته</th></tr>
+        <tr><td class="ltr">activity.php</td><td>Class فيه create/getByItinerary/approve/reject للأنشطة.</td></tr>
+        <tr><td class="ltr">expense.php</td><td>Class لإضافة وقراءة وحذف expense.</td></tr>
+        <tr><td class="ltr">emergencyContact.php</td><td>Class لإضافة وقراءة emergency contacts المرتبطة بالرحلة.</td></tr>
+        <tr><td class="ltr">booking.php / payment.php</td><td>Models بسيطة فيها properties بتعبر عن أعمدة الجداول.</td></tr>
+        <tr><td class="ltr">users.php / role.php</td><td>تمثيل بيانات المستخدم والدور.</td></tr>
+        <tr><td class="ltr">TripRepository.php</td><td>Repository بسيط لقراءة كل الرحلات.</td></tr>
+    </table>
+
+    <h3>Views</h3>
+    <table>
+        <tr><th>الملف</th><th>بيظهر للمستخدم إيه؟</th></tr>
+        <tr><td class="ltr">Views/Auth/register.php</td><td>Form تسجيل حساب جديد، بيرسل البيانات لـ AuthController.</td></tr>
+        <tr><td class="ltr">Views/Auth/signin.php</td><td>Form تسجيل الدخول، وبعد النجاح يوجه Admin أو User حسب role_id.</td></tr>
+        <tr><td class="ltr">Views/User/homepage.php</td><td>الصفحة الرئيسية للمستخدم وفيها روابط الرحلات والحجوزات والمستندات والإشعارات.</td></tr>
+        <tr><td class="ltr">Views/User/viewTrips.php</td><td>عرض الرحلات المتاحة وتفاصيل itinerary وemergency contacts وزر booking.</td></tr>
+        <tr><td class="ltr">Views/User/Trips/createTrip.php</td><td>Form إنشاء Trip جديد، خاص بالـ Leader/Admin.</td></tr>
+        <tr><td class="ltr">Views/User/Trips/list.php</td><td>عرض الرحلات التي يملكها الـ Leader، والـ Admin يرى الكل.</td></tr>
+        <tr><td class="ltr">Views/User/activityManagement.php</td><td>إدارة الأنشطة الخاصة بـ itinerary: propose activity وApprove/Reject للقائد فقط.</td></tr>
+        <tr><td class="ltr">Views/User/viewBookings.php</td><td>عرض حجوزات المستخدم والدفع أو الإلغاء ودعوة أعضاء.</td></tr>
+        <tr><td class="ltr">Views/Admin/adminDashboard.php</td><td>لوحة تحكم الأدمن: users, bookings, reports, edit/delete users.</td></tr>
+    </table>
+
+    <h2 class="break">6. شرح التستات</h2>
+    <p class="lead">
+        التستات مكتوبة بـ PHPUnit. كل Test Class بيجهز بيانات في setUp، ينظفها في tearDown،
+        وبعدين كل function تبدأ بـ test... تختبر سيناريو معين باستخدام Assertions.
+    </p>
+
+    <h3>bootstrap.php</h3>
+    <p>
+        ده الملف اللي PHPUnit بيشغله قبل التستات. بيعمل include للـ Controllers وModels المطلوبة،
+        وبيوفر helper اسمها غالبا <code>getTestConnection()</code> عشان كل test يفتح اتصال بقاعدة البيانات.
+    </p>
+
+    <pre><code>protected function setUp(): void
+{
+    $this-&gt;conn = getTestConnection();
+    // create test data
+}
+
+protected function tearDown(): void
+{
+    // delete test data
+    $this-&gt;conn-&gt;close();
+}</code></pre>
+
+    <h3>DBControllerTest.php</h3>
+    <p>
+        بيتأكد إن الاتصال بقاعدة البيانات شغال، وإن اسم الداتابيز صحيح، وإن الجداول الأساسية موجودة.
+        ده مهم لأن باقي التستات كلها معتمدة على DB connection.
+    </p>
+
+    <h3>AuthControllerTest.php</h3>
+    <table>
+        <tr><th>Test</th><th>بيثبت إيه؟</th></tr>
+        <tr><td>Register new user</td><td>إدخال user جديد في جدول users ينجح.</td></tr>
+        <tr><td>Duplicate email</td><td>الإيميل المتكرر يتم اكتشافه عن طريق SELECT.</td></tr>
+        <tr><td>Correct credentials</td><td>password_verify بيرجع true مع الباسورد الصحيح.</td></tr>
+        <tr><td>Wrong password</td><td>password_verify بيرجع false مع باسورد غلط.</td></tr>
+        <tr><td>Non-existent email</td><td>الاستعلام يرجع 0 rows لو الإيميل مش موجود.</td></tr>
+        <tr><td>Password hashing</td><td>الباسورد المخزن لا يساوي النص الأصلي، لكن password_verify يشتغل.</td></tr>
+    </table>
+
+    <h3>TripControllerTest.php</h3>
+    <p>
+        بيختبر CRUD الخاص بالرحلات: إنشاء Trip، قراءتها بالـ ID، تحديث الاسم أو الميزانية،
+        حذفها، قراءة Trip غير موجودة، التأكد من تخزين budget بشكل صحيح، والتأكد إن end_date بعد start_date.
+    </p>
+
+    <h3>BookingControllerTest.php</h3>
+    <p>
+        بيركز على booking flow: إنشاء booking، منع duplicate booking لنفس user ونفس trip،
+        وتغيير حالة الحجز عند الإلغاء.
+    </p>
+
+    <h3>PaymentControllerTest.php</h3>
+    <p>
+        بيختبر الدفع: لو المبلغ صح يتسجل payment بحالة successful ويتحول booking إلى confirmed.
+        ولو المبلغ مختلف عن تكلفة booking، التست يتأكد إن mismatch متشاف.
+    </p>
+
+    <h3>ActivityTest.php</h3>
+    <p>
+        بيختبر activity model: إنشاء activity بحالة pending، وبعدها approve يحول status إلى approved،
+        وreject يحول status إلى rejected.
+    </p>
+
+    <h3>ExpenseTest.php</h3>
+    <p>
+        بيختبر إضافة expense مرتبطة برحلة، قراءتها، وحذفها من قاعدة البيانات.
+    </p>
+
+    <div class="success">
+        آخر تشغيل للتستات على المشروع كان: <strong>31 tests, 57 assertions, OK</strong>.
+    </div>
+
+    <h2 class="break">7. أساسيات PHP المستخدمة في المشروع</h2>
+    <h3>PHP داخل HTML</h3>
+    <p>
+        PHP يقدر يكتب HTML ديناميكي. أي كود بين <code>&lt;?php ... ?&gt;</code> بيتنفذ على السيرفر
+        قبل ما الصفحة توصل للمتصفح.
+    </p>
+    <pre><code>&lt;h1&gt;Welcome, &lt;?= htmlspecialchars($user['name']) ?&gt;&lt;/h1&gt;</code></pre>
+
+    <h3>GET</h3>
+    <p>
+        GET بتجيب بيانات من الرابط. مثال:
+        <span class="ltr">edit.php?id=5</span>
+        هنا نقدر نقرأ id بـ <code>$_GET['id']</code>.
+    </p>
+    <pre><code>$id = isset($_GET['id']) ? (int)$_GET['id'] : 0;</code></pre>
+    <p class="note">
+        GET مناسب للقراءة أو التنقل، لكن مش أفضل اختيار للحذف أو العمليات الحساسة لأنه ظاهر في URL.
+    </p>
+
+    <h3>POST</h3>
+    <p>
+        POST بتستخدم غالبا مع forms لما نرسل بيانات زي login/register/create trip.
+        البيانات بتكون في <code>$_POST</code>.
+    </p>
+    <pre><code>if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+}</code></pre>
+
+    <h3>Session</h3>
+    <p>
+        Session بتخزن بيانات المستخدم بين الصفحات. بعد login بنحفظ user id وrole في <code>$_SESSION</code>.
+    </p>
+    <pre><code>session_start();
+$_SESSION['user'] = [
+    "id" =&gt; $row['user_id'],
+    "email" =&gt; $row['email'],
+    "role_id" =&gt; $row['role_id']
+];</code></pre>
+
+    <h3>require_once</h3>
+    <p>
+        بتستخدم لاستدعاء ملف PHP مرة واحدة فقط. مثلا Controller يحتاج Model أو DBController.
+    </p>
+    <pre><code>require_once '../../Controllers/DBController.php';
+require_once '../../Models/users.php';</code></pre>
+
+    <h3>mysqli وPrepared Statements</h3>
+    <p>
+        mysqli هي طريقة PHP للتعامل مع MySQL. Prepared Statement بتحمي من SQL Injection لأنها تفصل
+        كود SQL عن البيانات القادمة من المستخدم.
+    </p>
+    <pre><code>$stmt = $conn-&gt;prepare("SELECT * FROM users WHERE email = ? LIMIT 1");
+$stmt-&gt;bind_param("s", $email);
+$stmt-&gt;execute();
+$result = $stmt-&gt;get_result();</code></pre>
+
+    <h3>bind_param types</h3>
+    <table>
+        <tr><th>الحرف</th><th>المعنى</th><th>مثال</th></tr>
+        <tr><td>s</td><td>string</td><td>email, name, status</td></tr>
+        <tr><td>i</td><td>integer</td><td>user_id, trip_id</td></tr>
+        <tr><td>d</td><td>double/float</td><td>budget, cost, amount</td></tr>
+        <tr><td>b</td><td>blob</td><td>ملفات binary نادرة الاستخدام هنا</td></tr>
+    </table>
+
+    <h3>password_hash وpassword_verify</h3>
+    <p>
+        ممنوع تخزين الباسورد plain text. <code>password_hash</code> بيحوله لقيمة آمنة،
+        و<code>password_verify</code> بتتأكد إن الباسورد اللي المستخدم كتبه يطابق الهاش.
+    </p>
+    <pre><code>$hash = password_hash($password, PASSWORD_DEFAULT);
+
+if (password_verify($password, $row['password'])) {
+    // login success
+}</code></pre>
+
+    <h3>Redirect بالـ header</h3>
+    <p>
+        بعد عملية ناجحة بننقل المستخدم لصفحة تانية باستخدام header. لازم بعدها نعمل exit عشان الكود اللي بعده مايكملش.
+    </p>
+    <pre><code>header("Location: ../Views/User/homepage.php");
+exit();</code></pre>
+
+    <h3>htmlspecialchars</h3>
+    <p>
+        لما نطبع بيانات جاية من المستخدم في HTML لازم نستخدم <code>htmlspecialchars</code>
+        عشان نقلل خطر XSS.
+    </p>
+    <pre><code>&lt;td&gt;&lt;?= htmlspecialchars($row['name']) ?&gt;&lt;/td&gt;</code></pre>
+
+    <h2 class="break">8. نقاط أمان وفاليديشن مهمة</h2>
+    <ul>
+        <li>التحقق من login قبل أي صفحة حساسة باستخدام Session.</li>
+        <li>التحقق من role_id قبل عمليات Admin أو Leader.</li>
+        <li>التحقق من ownership: الـ leader يعدل أو يحذف رحلاته فقط.</li>
+        <li>منع الباسورد الأقل من 8 حروف من السيرفر وليس من الواجهة فقط.</li>
+        <li>استخدام Prepared Statements بدل دمج قيم المستخدم داخل SQL مباشرة.</li>
+        <li>استخدام htmlspecialchars عند عرض بيانات المستخدمين.</li>
+        <li>عدم الاعتماد على إخفاء الزر فقط، لأن المستخدم ممكن يكتب URL بنفسه.</li>
+    </ul>
+
+    <h2>9. ملخص للمناقشة</h2>
+    <p class="lead">
+        لو اتسألت المشروع بيعمل إيه: قل إنه Travel Planner لإدارة الرحلات الجماعية،
+        فيه roles مختلفة، وفيه flows للحجز والدفع والأنشطة والمصاريف والإشعارات.
+        استخدمنا PHP مع MySQL وMVC بسيط، والتستات بـ PHPUnit بتغطي أهم العمليات زي auth/trips/bookings/payments/activities/expenses.
+    </p>
+    <p>
+        ولو اتسألت عن أهم جزء تقني: ركز على Session للـ authentication، role_id للـ authorization،
+        Prepared Statements لحماية SQL، وpassword_hash لحماية الباسورد.
+    </p>
+
+    <p class="small">Generated for Travel Planner project summary.</p>
+</main>
+</body>
+</html>
