@@ -1,115 +1,158 @@
+<div align="center">
+
 # WanderPlan Travel Planner
 
-WanderPlan is a PHP and MySQL travel planning web app for organizing group trips, bookings, activities, expenses, payments, travel documents, emergency contacts, notifications, and admin reporting.
+### Collaborative travel planning, booking, payments, expenses, documents, and admin management in one PHP/MySQL web app.
+
+![PHP](https://img.shields.io/badge/PHP-Backend-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-Database-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![XAMPP](https://img.shields.io/badge/XAMPP-Local%20Server-FB7A24?style=for-the-badge&logo=xampp&logoColor=white)
+![PHPUnit](https://img.shields.io/badge/PHPUnit-31%20Tests%20Passing-3A9E50?style=for-the-badge)
+
+[Features](#features) | [Screenshots](#screenshots) | [Run Locally](#run-locally) | [Testing](#testing) | [Structure](#project-structure)
+
+</div>
+
+---
+
+## Overview
+
+WanderPlan is a full-stack travel planning system built with PHP, MySQL, and a classic MVC-style folder structure. It supports group trip creation, itinerary planning, booking, payments, expenses, travel document uploads, emergency contacts, notifications, and admin reporting.
+
+The app is designed around two main experiences:
+
+- **Travelers and trip leaders** can create trips, manage itineraries, book trips, pay, invite members, track expenses, and organize trip safety details.
+- **Admins** can monitor users, bookings, trip counts, active members, and booking status reports from a dedicated dashboard.
+
+---
 
 ## Features
 
-- User registration and sign in
-- Role-based redirects for admin and users
-- Trip creation and management
-- Booking and payment flow
-- Activity and itinerary planning
-- Expense tracking
-- Travel document uploads
-- Notifications
-- Admin dashboard
-- PHPUnit test suite and project reports
+| Area | Capabilities |
+| --- | --- |
+| Authentication | Register, sign in, reset password, role-based redirects |
+| Trip Planning | Create trips, edit trips, manage status, budget, dates, and descriptions |
+| Itinerary | Add day-by-day plans, destinations, stops, and activity proposals |
+| Booking | Browse upcoming trips, book trips, cancel bookings, view booking history |
+| Payment | Payment form with booking amount and traveler/card details |
+| Expenses | Add expenses, classify split type, view trip expense cards |
+| Collaboration | Invite members to trips and manage group participation |
+| Safety | Store emergency contacts per trip |
+| Documents | Upload passport or national ID documents |
+| Admin | Manage users, inspect bookings, and view live summary metrics |
+| Quality | PHPUnit test suite with controller and model coverage |
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+| --- | --- |
+| Backend | PHP |
+| Database | MySQL / MariaDB |
+| Local Runtime | XAMPP |
+| Testing | PHPUnit |
+| Frontend | PHP views, HTML, CSS, JavaScript |
+| Architecture | Controllers, Models, Views, SQL scripts, tests |
+
+---
 
 ## Screenshots
 
-### Homepage
+### Main Experience
 
-![Homepage screen](screenshots/homepage.png)
+| Homepage | Logged-In Homepage |
+| --- | --- |
+| ![Homepage screen](screenshots/homepage.png) | ![Logged-in homepage](screenshots/homepage-authenticated.png) |
 
-### Logged-In Homepage
+### Trip Creation Flow
 
-![Logged-in homepage](screenshots/homepage-authenticated.png)
+| Create Trip | Trip Added |
+| --- | --- |
+| ![Create trip form](screenshots/create-trip.png) | ![Trips list after adding a trip](screenshots/trips-list-after-add.png) |
 
-### Add a Trip
+### Traveler Workflow
 
-![Create trip form](screenshots/create-trip.png)
+| Upcoming Trips | My Bookings |
+| --- | --- |
+| ![Upcoming trips screen](screenshots/upcoming-trips.png) | ![My bookings screen](screenshots/my-bookings.png) |
 
-### Trip Added
+| Payment | Expenses |
+| --- | --- |
+| ![Payment screen](screenshots/payment.png) | ![Expenses screen](screenshots/expenses.png) |
 
-![Trips list after adding a trip](screenshots/trips-list-after-add.png)
+| Activities | Emergency Contacts |
+| --- | --- |
+| ![Activities management screen](screenshots/activities.png) | ![Emergency contacts screen](screenshots/emergency-contacts.png) |
 
-### Upcoming Trips
+| Upload Document | Admin Dashboard |
+| --- | --- |
+| ![Upload document screen](screenshots/upload-document.png) | ![Admin dashboard screen](screenshots/admin-dashboard.png) |
 
-![Upcoming trips screen](screenshots/upcoming-trips.png)
+### Authentication
 
-### My Bookings
+| Sign In | Register |
+| --- | --- |
+| ![Sign in screen](screenshots/signin.png) | ![Register screen](screenshots/register.png) |
 
-![My bookings screen](screenshots/my-bookings.png)
-
-### Payment
-
-![Payment screen](screenshots/payment.png)
-
-### Expenses
-
-![Expenses screen](screenshots/expenses.png)
-
-### Activities
-
-![Activities management screen](screenshots/activities.png)
-
-### Emergency Contacts
-
-![Emergency contacts screen](screenshots/emergency-contacts.png)
-
-### Upload Document
-
-![Upload document screen](screenshots/upload-document.png)
-
-### Admin Dashboard
-
-![Admin dashboard screen](screenshots/admin-dashboard.png)
-
-### Sign In
-
-![Sign in screen](screenshots/signin.png)
-
-### Register
-
-![Register screen](screenshots/register.png)
+---
 
 ## Requirements
 
-- PHP, for example the PHP executable included with XAMPP
+- PHP, such as the PHP executable included with XAMPP
 - MySQL or MariaDB
-- Composer, optional for installing dev dependencies
+- XAMPP Control Panel for local Apache/MySQL management
+- Composer, optional for dependency installation
 
-The app is configured to use this local database:
+The project is currently configured for this local database:
 
-```php
+```text
 host: localhost
 database: travel_planner1
 user: root
 password:
 ```
 
+---
+
 ## Run Locally
 
-Start MySQL, create/import the `travel_planner1` database, then run the PHP development server from the project root:
+1. Start **Apache** and **MySQL** from XAMPP.
+2. Create or import the `travel_planner1` database in MySQL.
+3. Open a terminal in the project root.
+4. Start the PHP development server:
 
 ```powershell
 C:\xampp\php\php.exe -S 127.0.0.1:8000 -t .
 ```
 
-Open:
+5. Open the app:
 
 ```text
 http://127.0.0.1:8000/Views/Auth/signin.php
 ```
 
-The database-backed pages, including the user homepage and dashboards, require MySQL to be running with the expected schema.
+Useful local pages:
 
-## Tests
+| Page | URL |
+| --- | --- |
+| Sign In | `http://127.0.0.1:8000/Views/Auth/signin.php` |
+| Register | `http://127.0.0.1:8000/Views/Auth/register.php` |
+| Homepage | `http://127.0.0.1:8000/Views/User/homepage.php` |
+| Upcoming Trips | `http://127.0.0.1:8000/Views/User/viewTrips.php` |
+| My Bookings | `http://127.0.0.1:8000/Views/User/viewBookings.php` |
+| Admin Dashboard | `http://127.0.0.1:8000/Views/Admin/adminDashboard.php` |
 
-Run the PHPUnit PHAR included in the project:
+Database-backed pages require MySQL to be running with the expected schema and data.
+
+---
+
+## Testing
+
+Run the included PHPUnit PHAR from the project root:
 
 ```powershell
-C:\xampp\php\php.exe phpunit-9.phar
+C:\xampp\php\php.exe phpunit-9.phar --configuration phpunit.xml
 ```
 
 Latest local result with XAMPP/MySQL running:
@@ -118,15 +161,72 @@ Latest local result with XAMPP/MySQL running:
 OK (31 tests, 57 assertions)
 ```
 
+---
+
 ## Project Structure
 
 ```text
-config/        Database configuration
-Controllers/   Request handling and business logic
-Models/        Domain models
-Views/         PHP views and static assets
-sql/           Database migration/fix scripts
-tests/         PHPUnit tests and performance test assets
-uploads/       Uploaded demo images/documents
-screenshots/   README screenshots
+Travel_Planner/
+|-- config/                  Database configuration
+|-- Controllers/             Request handling and business logic
+|-- Models/                  Domain models and database-facing entities
+|-- Views/                   PHP pages, UI screens, and static assets
+|   |-- Admin/               Admin dashboard
+|   |-- Auth/                Sign in, register, reset password, logout
+|   |-- User/                Traveler and trip leader workflows
+|   `-- Assets/              Images and UI assets
+|-- sql/                     Database migration/fix scripts
+|-- tests/                   PHPUnit and performance test assets
+|-- uploads/                 Uploaded/demo media
+|-- screenshots/             README screenshot gallery
+|-- composer.json            PHP dependency metadata
+|-- phpunit.xml              Root test configuration
+`-- README.md                Project documentation
 ```
+
+---
+
+## Core User Flow
+
+```text
+Register / Sign In
+        |
+        v
+Homepage
+        |
+        +--> Create Trip --> Add Itinerary Days --> Manage Activities
+        |
+        +--> Browse Upcoming Trips --> Book Trip --> Pay --> View Booking
+        |
+        +--> Track Expenses --> Invite Members --> Upload Documents
+        |
+        +--> Add Emergency Contacts
+```
+
+Admin flow:
+
+```text
+Admin Sign In
+        |
+        v
+Admin Dashboard
+        |
+        +--> View users
+        +--> Edit user roles
+        +--> Monitor bookings
+        +--> Review trip/member metrics
+```
+
+---
+
+## Repository
+
+GitHub: [malakmohamed172/Travel-Planner](https://github.com/malakmohamed172/Travel-Planner)
+
+---
+
+<div align="center">
+
+Built as a complete PHP/MySQL travel planning project with tested booking, activity, payment, expense, document, and admin workflows.
+
+</div>
